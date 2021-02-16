@@ -21,7 +21,7 @@ void chessPrint(struct chessCell chessState[8][8])
                 printf(" \e[39m%s ", chessState[i][j].figure);
             }
         }
-        printf("\n");
+        printf("\e[0m\n");
     }
 }
 int main(int argc, char const* argv[])
