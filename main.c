@@ -1,12 +1,12 @@
 #include <memory.h>
 #include <stdio.h>
 
-struct chessCell {
+typedef struct {
     int color; // 0 = black, 1 = white
     char figure[4];
-};
+} chessCell;
 
-void chessPrint(struct chessCell chessState[8][8])
+void chessPrint(chessCell chessState[8][8])
 {
     for (int i = 0; i < 8; ++i) {
         for (int j = 0; j < 8; ++j) {
@@ -35,7 +35,7 @@ int main(int argc, char const* argv[])
     char king[4] = "\u265A";
     char empty[4] = " ";
 
-    struct chessCell chessState[8][8];
+    chessCell chessState[8][8];
 
     for (int i = 0; i < 8; ++i) {
         for (int j = 0; j < 8; ++j) {
