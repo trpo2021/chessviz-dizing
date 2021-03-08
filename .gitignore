@@ -52,4 +52,4 @@ Mkfile.old
 dkms.conf
 
 # makefile executable(i don't know what file type it is)
-output
+bin/chessviz
