@@ -1,8 +1,18 @@
-output: main.o
-	gcc main.o -o output
+CFLAGS = -Wall -Werror
 
-main.o: main.c
-	gcc -Wall -Werror -c main.c
+
+APP_SOURCES = $(shell find src -name '*.c')
+APP_OBJECTS = $(APP_SOURCES:src/%.c=obj/%.o)
+
+
+bin/chessviz: $(APP_OBJECTS)
+	gcc $(CFLAGS) $< -o $@
+
+
+obj/%.o: src/%.c
+	gcc -c $(CFLAGS) $< -o $@
+
 
 clean:
-	rm *.o output
+	rm bin/*
+	rm obj/*
