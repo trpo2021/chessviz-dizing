@@ -6,9 +6,13 @@ typedef struct {
     char figure[4];
 } chessCell;
 
-void chessPrint(chessCell chessState[8][8])
+typedef chessCell chessField[8][8];
+
+void printChessField(chessField chessState)
 {
+    printf("   a  b  c  d  e  f  g  h\n");
     for (int i = 0; i < 8; ++i) {
+        printf("%d ", i + 1);
         for (int j = 0; j < 8; ++j) {
             if ((i + j) % 2 == 0) {
                 printf("\e[47m");
@@ -21,10 +25,12 @@ void chessPrint(chessCell chessState[8][8])
                 printf(" \e[39m%s ", chessState[i][j].figure);
             }
         }
-        printf("\e[0m\n");
+        printf("\e[0m %d\n", i);
     }
+    printf("   a  b  c  d  e  f  g  h\n");
 }
-int main(int argc, char const* argv[])
+
+void initializeChessField(chessField chessState)
 {
     // UNICODE CHESS SYMBOLS
     char pawn[4] = "\u265F";
@@ -34,8 +40,6 @@ int main(int argc, char const* argv[])
     char queen[4] = "\u265B";
     char king[4] = "\u265A";
     char empty[4] = " ";
-
-    chessCell chessState[8][8];
 
     for (int i = 0; i < 8; ++i) {
         for (int j = 0; j < 8; ++j) {
@@ -63,7 +67,53 @@ int main(int argc, char const* argv[])
         chessState[6][j].color = 1;
         chessState[7][j].color = 1;
     }
+}
 
-    chessPrint(chessState);
+void moveChessFigure(chessField chessState, int x1, int y1, int x2, int y2)
+{
+    memcpy(chessState[x2][y2].figure, chessState[x1][y1].figure, 4);
+    chessState[x2][y2].color = chessState[x1][y1].color;
+
+    memcpy(chessState[x1][y1].figure, " ", 4);
+}
+
+int coordFromChar(char symb)
+{
+    char row[] = "abcdefgh";
+    for (int i = 0; i < 8; ++i) {
+        if (symb == row[i]) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main(int argc, char const* argv[])
+{
+    chessField chessState;
+    initializeChessField(chessState);
+    printChessField(chessState);
+
+    FILE* fp;
+    char str[32];
+    int iter = 0;
+    fp = fopen(argv[1], "r");
+    while (fp != NULL && (fgets(str, 30, fp))) {
+        int x1 = (int)str[1] - 49;
+        int y1 = coordFromChar(str[0]);
+        int x2 = (int)str[4] - 49;
+        int y2 = coordFromChar(str[3]);
+
+        ++iter;
+        printf("Move %d: %c%c to %c%c\n", iter, str[0], str[1], str[3], str[4]);
+        if (x1 == -1 || x2 == -1 || y1 == -1 || y2 == -1) {
+            printf("Error: Incorrect input\n");
+            return -1;
+        }
+
+        moveChessFigure(chessState, x1, y1, x2, y2);
+        printChessField(chessState);
+    }
+
     return 0;
 }
