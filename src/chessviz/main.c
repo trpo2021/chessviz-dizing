@@ -1,6 +1,6 @@
+#include <libchessviz/chess.h>
 #include <memory.h>
 #include <stdio.h>
-#include <libchessviz/chess.h>
 
 int coordFromChar(char symb)
 {
