@@ -12,7 +12,7 @@ DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d)
 
 -include $(DEPS)
 
-bin/chessviz: $(APP_OBJECTS) $(LIB_PATH)
+bin/chessvizRun: $(APP_OBJECTS) $(LIB_PATH)
 	gcc $(CFLAGS) $^ -o $@
 
 $(LIB_PATH): $(LIB_OBJECTS)
@@ -26,4 +26,4 @@ obj/libchessviz%.o: src/libchessviz%.c
 
 
 clean:
-	rm $(APP_OBJECTS) $(LIB_PATH) $(LIB_OBJECTS) bin/chessviz $(DEPS)
+	rm $(APP_OBJECTS) $(LIB_PATH) $(LIB_OBJECTS) bin/chessvizRun $(DEPS)
