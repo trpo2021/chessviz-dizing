@@ -1,14 +1,12 @@
+#include <libchessviz/chess.h>
 #include <memory.h>
 #include <stdio.h>
 
-typedef struct {
-    int color; // 0 = black, 1 = white
-    char figure[4];
-} chessCell;
-
-void chessPrint(chessCell chessState[8][8])
+void printChessField(chessField chessState)
 {
+    printf("   a  b  c  d  e  f  g  h\n");
     for (int i = 0; i < 8; ++i) {
+        printf("%d ", i + 1);
         for (int j = 0; j < 8; ++j) {
             if ((i + j) % 2 == 0) {
                 printf("\e[47m");
@@ -21,10 +19,12 @@ void chessPrint(chessCell chessState[8][8])
                 printf(" \e[39m%s ", chessState[i][j].figure);
             }
         }
-        printf("\e[0m\n");
+        printf("\e[0m %d\n", i);
     }
+    printf("   a  b  c  d  e  f  g  h\n");
 }
-int main(int argc, char const* argv[])
+
+void initializeChessField(chessField chessState)
 {
     // UNICODE CHESS SYMBOLS
     char pawn[4] = "\u265F";
@@ -34,8 +34,6 @@ int main(int argc, char const* argv[])
     char queen[4] = "\u265B";
     char king[4] = "\u265A";
     char empty[4] = " ";
-
-    chessCell chessState[8][8];
 
     for (int i = 0; i < 8; ++i) {
         for (int j = 0; j < 8; ++j) {
@@ -63,7 +61,12 @@ int main(int argc, char const* argv[])
         chessState[6][j].color = 1;
         chessState[7][j].color = 1;
     }
+}
 
-    chessPrint(chessState);
-    return 0;
+void moveChessFigure(chessField chessState, int x1, int y1, int x2, int y2)
+{
+    memcpy(chessState[x2][y2].figure, chessState[x1][y1].figure, 4);
+    chessState[x2][y2].color = chessState[x1][y1].color;
+
+    memcpy(chessState[x1][y1].figure, " ", 4);
 }
