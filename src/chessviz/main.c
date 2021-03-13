@@ -36,8 +36,7 @@ int main(int argc, char const* argv[])
         return -1;
         }
 
-        moveChessFigure(chessState, x1, y1, x2, y2);
-        printChessField(chessState);
+        moveChessFigure(chessState, x1, y1, x2, y2);printChessField(chessState);
     }
 
     return 0;
