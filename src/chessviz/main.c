@@ -4,7 +4,7 @@
 
 int coordFromChar(char symb)
 {
-    char row[] = "abcdefgh";
+    char row[] = "abcdefg";
     for (int i = 0; i < 8; ++i) {
         if (symb == row[i]) {
             return i;
@@ -32,8 +32,8 @@ int main(int argc, char const* argv[])
         ++iter;
         printf("Move %d: %c%c to %c%c\n", iter, str[0], str[1], str[3], str[4]);
         if (x1 == -1 || x2 == -1 || y1 == -1 || y2 == -1) {
-            printf("Error: Incorrect input\n");
-            return -1;
+        printf("Error: Incorrect input\n");
+        return -1;
         }
 
         moveChessFigure(chessState, x1, y1, x2, y2);
