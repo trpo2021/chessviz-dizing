@@ -14,3 +14,10 @@ jobs:
 
       - name: Build application
         run: make
+
+      - name: Build tests
+        run: make test
+
+      - name: Launch tests
+        run: ./bin/chessvizTest
+
