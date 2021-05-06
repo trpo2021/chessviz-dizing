@@ -19,7 +19,7 @@ void printChessField(chessField chessState)
                 printf(" \e[39m%s ", chessState[i][j].figure);
             }
         }
-        printf("\e[0m %d\n", i);
+        printf("\e[0m %d\n", i + 1);
     }
     printf("   a  b  c  d  e  f  g  h\n");
 }
