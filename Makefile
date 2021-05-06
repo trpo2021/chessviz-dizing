@@ -1,5 +1,6 @@
-CFLAGS = -Wall -Werror -I src -I thirdparty -MP -MMD
+CFLAGS = -Wall -Werror -I src -I thirdparty
 
+DFLAGS = -MP -MMD
 
 APP_SOURCES = $(shell find src/chessviz -name '*.c')
 APP_OBJECTS = $(APP_SOURCES:src/chessviz/%.c=obj/chessviz/%.o)
@@ -20,16 +21,16 @@ DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d)
 all: bin/chessvizRun
 
 bin/chessvizRun: $(APP_OBJECTS) $(LIB_PATH)
-	gcc $(CFLAGS) $^ -o $@
+	gcc $(CFLAGS) $(DFLAGS)  $^ -o $@
 
 $(LIB_PATH): $(LIB_OBJECTS)
 	ar rcs $@ $^
 
 obj/chessviz/%.o: src/chessviz/%.c
-	gcc -c $(CFLAGS) $< -o $@
+	gcc -c $(CFLAGS) $(DFLAGS) $< -o $@
 
 obj/libchessviz/%.o: src/libchessviz/%.c
-	gcc -c $(CFLAGS) $< -o $@
+	gcc -c $(CFLAGS) $(DFLAGS) $< -o $@
 
 
 .PHONY: test
