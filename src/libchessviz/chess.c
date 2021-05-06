@@ -19,7 +19,7 @@ void printChessField(chessField chessState)
                 printf(" \e[39m%s ", chessState[i][j].figure);
             }
         }
-        printf("\e[0m %d\n", i);
+        printf("\e[0m %d\n", i + 1);
     }
     printf("   a  b  c  d  e  f  g  h\n");
 }
@@ -69,4 +69,15 @@ void moveChessFigure(chessField chessState, int x1, int y1, int x2, int y2)
     chessState[x2][y2].color = chessState[x1][y1].color;
 
     memcpy(chessState[x1][y1].figure, " ", 4);
+}
+
+int coordFromChar(char symb)
+{
+    char row[] = "abcdefgh";
+    for (int i = 0; i < 8; ++i) {
+        if (symb == row[i]) {
+            return i;
+        }
+    }
+    return -1;
 }

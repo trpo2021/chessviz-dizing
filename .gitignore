@@ -53,3 +53,4 @@ dkms.conf
 
 # makefile executable(i don't know what file type it is)
 chessvizRun
+chessvizTest
