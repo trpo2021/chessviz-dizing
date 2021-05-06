@@ -11,7 +11,7 @@ LIB_PATH = obj/libchessviz/libchessviz.a
 TEST_SOURCES = $(shell find test -name '*.c')
 TEST_OBJECTS = $(TEST_SOURCES:test/%.c=obj/test/%.o)
 
-DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d) $(TEST_OBJECTS:.o=.d)
+DEPS = $(APP_OBJECTS:.o=.d) $(LIB_OBJECTS:.o=.d)
 
 -include $(DEPS)
 
