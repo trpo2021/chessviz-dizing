@@ -2,16 +2,6 @@
 #include <memory.h>
 #include <stdio.h>
 
-int coordFromChar(char symb)
-{
-    char row[] = "abcdefgh";
-    for (int i = 0; i < 8; ++i) {
-        if (symb == row[i]) {
-            return i;
-        }
-    }
-    return -1;
-}
 
 int main(int argc, char const* argv[])
 {

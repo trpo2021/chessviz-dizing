@@ -70,3 +70,14 @@ void moveChessFigure(chessField chessState, int x1, int y1, int x2, int y2)
 
     memcpy(chessState[x1][y1].figure, " ", 4);
 }
+
+int coordFromChar(char symb)
+{
+    char row[] = "abcdefgh";
+    for (int i = 0; i < 8; ++i) {
+        if (symb == row[i]) {
+            return i;
+        }
+    }
+    return -1;
+}
