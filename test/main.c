@@ -10,7 +10,8 @@ int main(int argc, const char** argv)
 
 //////////////////////////////////////////////////////
 
-CTEST(InitializeChessBoard, test1) {
+CTEST(InitializeChessBoard, test1)
+{
     chessField chessState;
     initializeChessField(chessState);
 
@@ -18,14 +19,16 @@ CTEST(InitializeChessBoard, test1) {
     ASSERT_STR("\u265C", chessState[0][0].figure);
 }
 
-CTEST(InitializeChessBoard, test2) {
+CTEST(InitializeChessBoard, test2)
+{
     chessField chessState;
     initializeChessField(chessState);
-    
+
     ASSERT_STR(" ", chessState[4][5].figure);
 }
 
-CTEST(InitializeChessBoard, test3) {
+CTEST(InitializeChessBoard, test3)
+{
     chessField chessState;
     initializeChessField(chessState);
 
@@ -33,7 +36,8 @@ CTEST(InitializeChessBoard, test3) {
     ASSERT_STR("\u265D", chessState[7][2].figure);
 }
 
-CTEST(InitializeChessBoard, test4) {
+CTEST(InitializeChessBoard, test4)
+{
     chessField chessState;
     initializeChessField(chessState);
 
@@ -43,7 +47,8 @@ CTEST(InitializeChessBoard, test4) {
 
 //////////////////////////////////////////////////////
 
-CTEST(moveChessFigure, test1){
+CTEST(moveChessFigure, test1)
+{
     chessField chessState;
     initializeChessField(chessState);
 
@@ -55,7 +60,8 @@ CTEST(moveChessFigure, test1){
     ASSERT_STR(" ", chessState[0][0].figure);
 }
 
-CTEST(moveChessFigure, test2){
+CTEST(moveChessFigure, test2)
+{
     chessField chessState;
     initializeChessField(chessState);
 
@@ -67,7 +73,8 @@ CTEST(moveChessFigure, test2){
     ASSERT_STR(" ", chessState[7][2].figure);
 }
 
-CTEST(moveChessFigure, test3){
+CTEST(moveChessFigure, test3)
+{
     chessField chessState;
     initializeChessField(chessState);
 
@@ -81,14 +88,17 @@ CTEST(moveChessFigure, test3){
 
 //////////////////////////////////////////////////////
 
-CTEST(coordFromChar, test1){
+CTEST(coordFromChar, test1)
+{
     ASSERT_EQUAL(0, coordFromChar('a'));
 }
 
-CTEST(coordFromChar, test2){
+CTEST(coordFromChar, test2)
+{
     ASSERT_EQUAL(3, coordFromChar('d'));
 }
 
-CTEST(coordFromChar, test3){
+CTEST(coordFromChar, test3)
+{
     ASSERT_EQUAL(-1, coordFromChar('z'));
 }
