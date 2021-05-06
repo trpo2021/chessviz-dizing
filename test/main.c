@@ -81,39 +81,14 @@ CTEST(moveChessFigure, test3){
 
 //////////////////////////////////////////////////////
 
-/*CTEST(moveChessFigure, test1){
-    chessField chessState;
-    initializeChessField(chessState);
-
-    moveChessFigure(chessState, 7, 7, 2, 2);
-
-    ASSERT_EQUAL(1, chessState[2][2].color);
-    ASSERT_STR("\u265C", chessState[2][2].figure);
-
-    ASSERT_STR(" ", chessState[7][7].figure);
+CTEST(coordFromChar, test1){
+    ASSERT_EQUAL(0, coordFromChar('a'));
 }
 
-CTEST(moveChessFigure, test2){
-    chessField chessState;
-    initializeChessField(chessState);
-
-    moveChessFigure(chessState, 7, 7, 2, 2);
-
-    ASSERT_EQUAL(1, chessState[2][2].color);
-    ASSERT_STR("\u265C", chessState[2][2].figure);
-
-    ASSERT_STR(" ", chessState[7][7].figure);
+CTEST(coordFromChar, test2){
+    ASSERT_EQUAL(3, coordFromChar('d'));
 }
 
-CTEST(moveChessFigure, test3){
-    chessField chessState;
-    initializeChessField(chessState);
-
-    moveChessFigure(chessState, 7, 7, 2, 2);
-
-    ASSERT_EQUAL(1, chessState[2][2].color);
-    ASSERT_STR("\u265C", chessState[2][2].figure);
-
-    ASSERT_STR(" ", chessState[7][7].figure);
+CTEST(coordFromChar, test3){
+    ASSERT_EQUAL(-1, coordFromChar('z'));
 }
-*/
